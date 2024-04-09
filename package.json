@@ -1,0 +1,38 @@
+{
+  "name": "chefcompass-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -L",
+    "start": "node ./index.js --omit=dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RafaelDGonzalezN/ChefCompass-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RafaelDGonzalezN/ChefCompass-api/issues"
+  },
+  "homepage": "https://github.com/RafaelDGonzalezN/ChefCompass-api#readme",
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "build": "^0.1.4",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.19.2",
+    "install": "^0.13.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.0",
+    "npm": "^10.5.1",
+    "pg": "^8.11.5",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.2",
+    "uuid": "^9.0.1"
+  }
+}
