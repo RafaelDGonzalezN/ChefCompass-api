@@ -1,18 +1,24 @@
 const {Recet} = require("../db");
 const { Op } = require("sequelize");
 
-const getRecets = async (page = 1, size = 8) => {
+const getRecets = async (page = 1, size = 8, search = '') => {
     const options = {
-        limit: Number(size),
-        offset: (page - 1) * Number(size),
+      limit: Number(size),
+      offset: (page - 1) * Number(size),
+      where: {
+        [Op.or]: [
+          { name: { [Op.iLike]: `%${search}%` } },
+          { ingredients: { [Op.iLike]: `%${search}%` } }
+        ]
+      }
     }
-    const {count, rows} = await Recet.findAndCountAll(options)
+    const { count, rows } = await Recet.findAndCountAll(options)
     const recets = {
-        total: count,
-        recets: rows
+      total: count,
+      recets: rows
     }
     return recets
-}
+  }
 
 const getRecetsById = async (id) => {
     const recet = await Recet.findByPk(id);
