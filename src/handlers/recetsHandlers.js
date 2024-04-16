@@ -1,5 +1,6 @@
 const {
     getRecets,
+    getRecetsById,
     postRecets,
     putRecets,
     deleteRecets,
@@ -10,6 +11,16 @@ const getRecetsHandler = async (req, res) => {
     try {
         const recets = await getRecets();
         res.status(200).json(recets);
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+}
+
+const getRecetsByIdHandler = async (req, res) => {
+    const {id} = req.params
+    try {
+        const recet = await getRecetsById(id);
+        res.status(200).json(recet);
     } catch (error) {
         res.status(400).json({error: error.message});
     }
@@ -70,6 +81,7 @@ const restoreRecetsHandler = async (req, res) => {
 
 module.exports = { 
     getRecetsHandler,
+    getRecetsByIdHandler,
     postRecetsHandler,
     putRecetsHandler,
     deleteRecetsHandler,

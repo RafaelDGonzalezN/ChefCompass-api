@@ -4,7 +4,12 @@ const { Op } = require("sequelize");
 const getRecets = async () => {
     const recets = await Recet.findAll();
     return recets
-} 
+}
+
+const getRecetsById = async (id) => {
+    const recet = await Recet.findByPk(id);
+    return recet;
+}
 
 const postRecets = async (recetsData) => {
     const recet = await Recet.create(recetsData)
@@ -37,6 +42,7 @@ const restoreRecets = async (id) => {
 
 module.exports = {
     getRecets,
+    getRecetsById,
     postRecets,
     putRecets,
     deleteRecets,
