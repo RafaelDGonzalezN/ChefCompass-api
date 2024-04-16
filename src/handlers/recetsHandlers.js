@@ -9,8 +9,9 @@ const {
 
 const getRecetsHandler = async (req, res) => {
     const {page, size} = req.query
+    const {search} = req.body
     try {
-        const recets = await getRecets( page, size );
+        const recets = await getRecets( page, size, search );
         res.status(200).json(recets);
     } catch (error) {
         res.status(400).json({error: error.message});

@@ -18,9 +18,13 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     ingredients: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.STRING,
       allowNull: false
     },
+    // ingredients: {
+    //   type: DataTypes.ARRAY(DataTypes.STRING),
+    //   allowNull: false
+    // },
     preparation: {
       type: DataTypes.TEXT,
       allowNull: false
