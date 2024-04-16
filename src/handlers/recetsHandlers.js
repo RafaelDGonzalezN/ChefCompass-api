@@ -8,8 +8,9 @@ const {
     restoreRecets} = require('../controllers/recetsControllers');
 
 const getRecetsHandler = async (req, res) => {
+    const {page, size} = req.query
     try {
-        const recets = await getRecets();
+        const recets = await getRecets( page, size );
         res.status(200).json(recets);
     } catch (error) {
         res.status(400).json({error: error.message});

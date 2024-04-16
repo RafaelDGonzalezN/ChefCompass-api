@@ -21,8 +21,16 @@ const login = async (email, password) => {
     return {token, user: user.dataValues}
 }
 
-const getUsers = async () => {
-    const users = await User.findAll();
+const getUsers = async (page = 1, size = 8) => {
+    const options = {
+        limit: Number(size),
+        offset: (page - 1) * Number(size),
+    }
+    const {count, rows} = await User.findAndCountAll(options)
+    const users = {
+        total: count,
+        users: rows
+    }
     return users
 }
 const postUser = async (userData) => {

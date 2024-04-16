@@ -1,8 +1,16 @@
 const {Recet} = require("../db");
 const { Op } = require("sequelize");
 
-const getRecets = async () => {
-    const recets = await Recet.findAll();
+const getRecets = async (page = 1, size = 8) => {
+    const options = {
+        limit: Number(size),
+        offset: (page - 1) * Number(size),
+    }
+    const {count, rows} = await Recet.findAndCountAll(options)
+    const recets = {
+        total: count,
+        recets: rows
+    }
     return recets
 }
 
